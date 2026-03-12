@@ -1,0 +1,16 @@
+import numpy as np
+from thermal_manager import control_btms
+
+def simulate_drive_cycle():
+    # Simulate 100 minutes of driving with rising temperatures
+    time_minutes = np.arange(0, 100, 1)
+    # Simulated temperature curve
+    temps = 5 + (0.8 * time_minutes) 
+
+    print("--- EV Battery Thermal Simulation ---")
+    for t in temps[::10]: # Print every 10th minute
+        state = control_btms(t)
+        print(f"Minute {int(t)}: Temp {t:.1f}°C | Mode: {state}")
+
+if __name__ == "__main__":
+    simulate_drive_cycle()
